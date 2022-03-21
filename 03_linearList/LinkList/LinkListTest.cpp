@@ -24,5 +24,7 @@ int main(int argc, char const *argv[])
     cout << ll->indexOf(&str2) << endl;
     cout << ll->indexOf(&str5) << endl;
 
+    delete ll;
+
     return 0;
 }

@@ -26,6 +26,13 @@ public:
     }
     ~LinkList()
     {
+        Node *temp = head_->next_;
+        while (temp != nullptr)
+        {
+            Node *del = temp;
+            temp = temp->next_;
+            delete del;
+        }
         if (head_ != nullptr)
         {
             delete head_;
