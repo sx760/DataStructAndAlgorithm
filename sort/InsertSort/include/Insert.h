@@ -20,9 +20,7 @@ public:
                     break;
                 }
             }
-            
         }
-        
     }
 
     bool greater(const T& t1, const T& t2)
