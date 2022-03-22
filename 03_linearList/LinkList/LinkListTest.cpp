@@ -18,6 +18,8 @@ int main(int argc, char const *argv[])
     ll->insert(2, &str5);
 
     cout << ll << endl;
+    ll->reverse();
+    cout << ll << endl;
     
     cout << *(ll->get(2)) << endl;
 

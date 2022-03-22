@@ -20,6 +20,7 @@ int main(int argc, char const *argv[])
     cout << ll->length() << endl;
     cout << ll << endl;
     
+    cout << *(ll->get(0)) << endl;
     cout << *(ll->get(2)) << endl;
 
     cout << ll->indexOf(&str2) << endl;

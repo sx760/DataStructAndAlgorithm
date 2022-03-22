@@ -52,7 +52,7 @@ public:
 
     bool isEmpty() const
     {
-        return n_;
+        return n_ == 0;
     }
 
     T *get(int i) const
@@ -122,6 +122,38 @@ public:
             }
         }
         return -1;
+    }
+
+    /**
+    * @brief 反转链表
+    * 
+    */
+    void reverse()
+    {
+        if (isEmpty())
+        {
+            return;
+        }
+        reverse(head_->next_);
+    }
+
+    /**
+     * @brief 反转指定的节点
+     * 
+     * @param curr 反转的节点
+     * @return Node* 反转后的节点
+     */
+    Node *reverse(Node *curr)
+    {
+        if (curr->next_ == nullptr)
+        {
+            head_->next_ = curr;
+            return curr;
+        }
+        Node *pre = reverse(curr->next_);
+        pre->next_ = curr;
+        curr->next_ = nullptr;
+        return curr;
     }
 
     friend std::ostream &operator<<(std::ostream &os, const LinkList *ll)
