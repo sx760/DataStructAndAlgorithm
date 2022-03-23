@@ -24,7 +24,7 @@ public:
         head_ = new Node(nullptr, nullptr);
         size_ = 0;
     }
-    ~Stack()
+    /* ~Stack()
     {
         Node *temp = head_->next_;
         while (temp != nullptr)
@@ -36,6 +36,13 @@ public:
         if (head_ != nullptr)
         {
             delete head_;
+        }
+    } */
+    ~Stack()
+    {
+        if (head_ != nullptr)
+        {
+            deleteMemory(head_);
         }
     }
 
@@ -76,6 +83,23 @@ public:
         head_->next_ = oldFirst->next_;
         size_--;
         return oldFirst->item_;
+    }
+
+private:
+    void deleteMemory(Node *x)
+    {
+        if (x == nullptr)
+        {
+            return;
+        }
+        
+        if (x->next_ != nullptr)
+        {
+            deleteMemory(x->next_);
+        }
+        
+        delete x;
+        x = nullptr;
     }
 
 private:

@@ -25,7 +25,7 @@ public:
         last_ = nullptr;
         size_ = 0;
     }
-    ~Queue()
+    /* ~Queue()
     {
         Node *temp = head_->next_;
         while (temp != nullptr)
@@ -37,6 +37,13 @@ public:
         if (head_ != nullptr)
         {
             delete head_;
+        }
+    } */
+    ~Queue()
+    {
+        if (head_ != nullptr)
+        {
+            deleteMemory(head_);
         }
     }
 
@@ -88,6 +95,22 @@ public:
             last_ = nullptr;
         }
         return oldFirst->item_;
+    }
+
+private:
+    void deleteMemory(Node *x)
+    {
+        if (x == nullptr)
+        {
+            return;
+        }
+
+        if (x->next_ != nullptr)
+        {
+            deleteMemory(x->next_);
+        }
+        delete x;
+        x = nullptr;
     }
 
 private:

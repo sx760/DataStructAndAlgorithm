@@ -22,5 +22,6 @@ int main(int argc, char const *argv[])
     string *result = s->pop();
     cout << "pop is: " << *result << endl << s << endl;
 
+    delete s;
     return 0;
 }
