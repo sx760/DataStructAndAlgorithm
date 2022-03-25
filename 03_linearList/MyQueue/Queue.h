@@ -97,6 +97,42 @@ public:
         return oldFirst->item_;
     }
 
+public: // 迭代器实现
+    class Iterator
+    {
+        friend class Queue<T>;
+    public:
+        Iterator() {}
+
+        bool operator==(const Iterator &iter) const { return curr_ == iter.curr_; }
+        bool operator!=(const Iterator &iter) const { return curr_ != iter.curr_; }
+        T &operator*() const { return *curr_->item_; }
+        Iterator operator++(int) // iter++
+        {
+            Iterator temp = *this;
+            curr_ = curr_->next_;
+            return temp;
+        }
+        Iterator &operator++() // ++iter
+        {
+            curr_ = curr_->next_;
+            return *this;
+        }
+
+    protected:
+        Node *curr_;
+        Iterator(Node *n) { curr_ = n; }
+    };
+
+    Iterator begin()
+    {
+        return Iterator(head_->next_);
+    }
+    Iterator end()
+    {
+        return Iterator(nullptr);
+    }
+
 private:
     void deleteMemory(Node *x)
     {

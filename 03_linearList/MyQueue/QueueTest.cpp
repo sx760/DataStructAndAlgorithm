@@ -16,8 +16,22 @@ int main(int argc, char const *argv[])
     q->enqueue(s3);
     q->enqueue(s4);
 
-    cout << q << endl;
+    // cout << q << endl;
 
+    Queue<string>::Iterator it = q->begin();
+    for (it; it != q->end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    for (auto i : *q)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    
+    
     cout << "delete is : " << *(q->dequeue()) << endl;
     cout << q << endl << q->size() << endl;
 
