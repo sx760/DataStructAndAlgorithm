@@ -13,6 +13,14 @@ private:
         Node(T *item, Node *next) : item_(item), next_(next)
         {
         }
+        ~Node()
+        {
+            if (item_ != nullptr)
+            {
+                delete item_;
+                item_ = nullptr;
+            }
+        }
 
         T *item_;
         Node *next_;

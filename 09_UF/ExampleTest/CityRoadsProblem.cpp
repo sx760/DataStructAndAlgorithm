@@ -32,6 +32,7 @@ int main(int argc, char const *argv[])
                 break;
             case 1:
                 q = atoi(ch);
+                break;
             default:
                 break;
             };

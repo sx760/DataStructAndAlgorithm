@@ -19,6 +19,11 @@ public:
     DFS(Graph *G, int s)
     {
         marked_ = new bool[G->V()];
+        for (int i = 0; i < G->V(); i++)
+        {
+            marked_[i] = false;
+        }
+        
         count_ = 0;
 
         dfs(G, s);
