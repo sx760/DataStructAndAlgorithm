@@ -13,6 +13,14 @@ private:
         Node(T *item, Node *next) : item_(item), next_(next)
         {
         }
+        ~Node()
+        {
+            if (item_ != nullptr)
+            {
+                delete item_;
+                item_ = nullptr;
+            }
+        }
 
         T *item_;
         Node *next_;
@@ -40,11 +48,22 @@ public:
     } */
     ~Stack()
     {
-        if (head_ != nullptr)
-        {
-            deleteMemory(head_);
-        }
+        deleteMemory(head_);
     }
+
+    /* Stack *operator=(const Stack *other) 
+    {
+        if (this != other)
+        {
+            if (head_ != nullptr)
+            {
+                delete head_;
+            }
+            head_ = new Node(nullptr, other->head_);
+            size_ = other->size_;
+        }
+        return this;
+    } */
 
     friend std::ostream &operator<<(std::ostream &os, const Stack *s)
     {
@@ -85,6 +104,43 @@ public:
         return oldFirst->item_;
     }
 
+public: // 迭代器实现
+    class Iterator
+    {
+        friend class Stack<T>;
+
+    public:
+        Iterator() {}
+
+        bool operator==(const Iterator &iter) const { return curr_ == iter.curr_; }
+        bool operator!=(const Iterator &iter) const { return curr_ != iter.curr_; }
+        T &operator*() const { return *curr_->item_; }
+        Iterator operator++(int) // iter++
+        {
+            Iterator temp = *this;
+            curr_ = curr_->next_;
+            return temp;
+        }
+        Iterator &operator++() // ++iter
+        {
+            curr_ = curr_->next_;
+            return *this;
+        }
+
+    protected:
+        Node *curr_;
+        Iterator(Node *n) { curr_ = n; }
+    };
+
+    Iterator begin()
+    {
+        return Iterator(head_->next_);
+    }
+    Iterator end()
+    {
+        return Iterator(nullptr);
+    }
+
 private:
     void deleteMemory(Node *x)
     {
@@ -92,12 +148,12 @@ private:
         {
             return;
         }
-        
+
         if (x->next_ != nullptr)
         {
             deleteMemory(x->next_);
         }
-        
+
         delete x;
         x = nullptr;
     }

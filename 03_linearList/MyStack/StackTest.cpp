@@ -19,6 +19,12 @@ int main(int argc, char const *argv[])
     cout << s << endl;
     cout << "===============================\n";
 
+    for (auto i : *s)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    
     string *result = s->pop();
     cout << "pop is: " << *result << endl << s << endl;
 

@@ -49,10 +49,7 @@ public:
     } */
     ~Queue()
     {
-        if (head_ != nullptr)
-        {
-            deleteMemory(head_);
-        }
+        deleteMemory(head_);
     }
 
     friend std::ostream &operator<<(std::ostream &os, const Queue *q)
@@ -109,6 +106,7 @@ public: // 迭代器实现
     class Iterator
     {
         friend class Queue<T>;
+
     public:
         Iterator() {}
 

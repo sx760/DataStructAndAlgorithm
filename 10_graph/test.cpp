@@ -1,5 +1,6 @@
 #include "DFS.h"
 #include "BFS.h"
+#include "DepthFirstPaths.h"
 
 #include <iostream>
 #include <fstream>
@@ -44,7 +45,8 @@ const std::string filename = "D:\\program\\VSCodeProjects\\CppProjects\\DataStru
     return 0;
 }
  */
-int main(int argc, char const *argv[])
+
+/* int main(int argc, char const *argv[])
 {
     using namespace std;
     ifstream fin;
@@ -54,12 +56,12 @@ int main(int argc, char const *argv[])
         cerr << "Could not open the file: " << filename << endl;
         exit(EXIT_FAILURE);
     }
-    int cityNum = 0, already = 0, haveTo = 0, p, q;
+    int v = 0, e = 0, haveTo = 0, p, q;
     char ch[20];
-    fin >> cityNum;
-    Graph *G = new Graph(cityNum);
-    fin >> already;
-    for (int i = 0; i < already; i++)
+    fin >> v;
+    Graph *G = new Graph(v);
+    fin >> e;
+    for (int i = 0; i < e; i++)
     {
         for (int j = 0; j < 2; j++)
         {
@@ -86,6 +88,57 @@ int main(int argc, char const *argv[])
 
     delete G;
     delete dfs;
+
+    return 0;
+}
+ */
+
+int main(int argc, char const *argv[])
+{
+    using namespace std;
+    const string filename = "D:\\program\\VSCodeProjects\\CppProjects\\DataStructAndAlgorithm\\10_graph\\paths.txt";
+    ifstream fin;
+    fin.open(filename);
+    if (!fin.is_open())
+    {
+        cerr << "Could not open the file: " << filename << endl;
+        exit(EXIT_FAILURE);
+    }
+    int v = 0, e = 0, p, q;
+    char ch[20];
+    fin >> v;
+    Graph *G = new Graph(v);
+    fin >> e;
+    for (int i = 0; i < e; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            fin.getline(ch, 20, ',');
+            switch (j)
+            {
+            case 0:
+                p = atoi(ch);
+                break;
+            case 1:
+                q = atoi(ch);
+                break;
+            default:
+                break;
+            };
+        }
+        G->addEdge(p, q);
+    }
+    fin.close();
+
+    DepthFirstPaths *find = new DepthFirstPaths(G, 0);
+    Stack<int> path = *find->pathTo(4);
+    for (auto i : path)
+    {
+        cout << i << "->";
+    }
+
+    delete G;
+    delete find;
 
     return 0;
 }
