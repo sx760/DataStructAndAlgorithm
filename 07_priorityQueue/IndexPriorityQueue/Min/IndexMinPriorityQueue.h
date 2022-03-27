@@ -175,7 +175,7 @@ private:
         while (k * 2 <= size_)
         {
             int min = k * 2;
-            if (min +1 <= size_)
+            if (min + 1 <= size_)
             {
                 if (less(min + 1, min))
                 {

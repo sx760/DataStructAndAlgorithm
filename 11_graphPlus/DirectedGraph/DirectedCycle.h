@@ -10,11 +10,11 @@
 class DirectedCycle
 {
 public:
-    DirectedCycle(Graph *G)
+    DirectedCycle(DiGraph *G)
     {
-        marked_ = new int[G->V()];
+        marked_ = new bool[G->V()];
         hasCycle_ = false;
-        onStack_ = new int[G->V()];
+        onStack_ = new bool[G->V()];
         for (int i = 0; i < G->V(); i++)
         {
             marked_[i] = false;
@@ -25,7 +25,7 @@ public:
         {
             if (!marked_[v])
             {
-                dfs(G, v)
+                dfs(G, v);
             }
         }
     }
@@ -49,7 +49,13 @@ public:
     }
 
 private:
-    void dfs(Graph *G, int v)
+    /**
+     * @brief 深度优先搜索检测是否有环
+     * 
+     * @param G 
+     * @param v 
+     */
+    void dfs(DiGraph *G, int v)
     {
         marked_[v] = true;
         onStack_[v] = true;
