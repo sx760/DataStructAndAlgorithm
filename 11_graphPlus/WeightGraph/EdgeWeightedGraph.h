@@ -65,7 +65,7 @@ public:
             {
                 if (e.other(v) < v)
                 {
-                    allEdges->enqueue(&e);
+                    allEdges->enqueue(new Edge(e));
                 }
             }
         }

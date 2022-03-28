@@ -1,4 +1,5 @@
 #include "PrimMST.h"
+#include "KruskalMST.h"
 
 #include <string>
 #include <iostream>
@@ -57,16 +58,25 @@ int main(int argc, char const *argv[])
     }
     fin.close();
 
-    PrimMST *mst = new PrimMST(G);
-    Queue<Edge> *edges = mst->edges();
-    for (auto a : *edges)
+    PrimMST *prim = new PrimMST(G);
+    KruskalMST *kruskal = new KruskalMST(G);
+    Queue<Edge> *edges1 = prim->edges();
+    Queue<Edge> *edges2 = kruskal->edges();
+    for (auto a : *edges1)
     {
         cout << a << "  ";
     }
     cout << endl;
+    for (auto b : *edges2)
+    {
+        cout << b << "  ";
+    }
+    cout << endl;
 
-    delete edges;
-    delete mst;
+    delete edges1;
+    delete edges2;
+    delete kruskal;
+    delete prim;
     delete G;
 
     return 0;

@@ -4,4 +4,4 @@ set(CMAKE_BUILD_TYPE Debug)
 
 set(CXX_STANDARD 11)
 
-add_subdirectory(11_graphPlus/WeightGraph)
+add_subdirectory(11_graphPlus/DirectedWeightGraph)
