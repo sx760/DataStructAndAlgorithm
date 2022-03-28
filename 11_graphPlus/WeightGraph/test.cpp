@@ -1,12 +1,28 @@
 #include "PrimMST.h"
 
+#include <string>
 #include <iostream>
 #include <fstream>
+#include <direct.h>
 
 int main(int argc, char const *argv[])
 {
     using namespace std;
-    const string filename = "D:\\program\\VSCodeProjects\\CppProjects\\DataStructAndAlgorithm\\11_graphPlus\\WeightGraph\\mst.txt";
+    //const string filename = "D:\\program\\VSCodeProjects\\CppProjects\\DataStructAndAlgorithm\\11_graphPlus\\WeightGraph\\mst.txt";
+    //const string filename = "D:\\Projects\\VSCodeProjects\\CppProjects\\DataStructAndAlgorithm\\11_graphPlus\\WeightGraph\\mst.txt";
+    char *pwd;
+    if ((pwd = getcwd(nullptr, 0)) == nullptr)
+    {
+        cerr << "getcwd error.\n";
+    }
+    else
+    {
+        cout << pwd << "\n";
+        free(pwd);
+    }
+    string filename(pwd, strlen(pwd));
+    filename += "\\mst.txt";
+    cout << filename << endl;
     ifstream fin;
     fin.open(filename);
     if (!fin.is_open())
