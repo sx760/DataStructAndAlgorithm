@@ -10,24 +10,20 @@ int main(int argc, char const *argv[])
     using namespace std;
     //const string filename = "D:\\program\\VSCodeProjects\\CppProjects\\DataStructAndAlgorithm\\11_graphPlus\\WeightGraph\\mst.txt";
     //const string filename = "D:\\Projects\\VSCodeProjects\\CppProjects\\DataStructAndAlgorithm\\11_graphPlus\\WeightGraph\\mst.txt";
-    char *pwd;
-    if ((pwd = getcwd(nullptr, 0)) == nullptr)
+
+    char name[] = "mst.txt";
+    /* char *cwd;
+    if ((cwd = getcwd(nullptr, 0)) == nullptr)
     {
         cerr << "getcwd error.\n";
+        exit(EXIT_FAILURE);
     }
-    else
-    {
-        cout << pwd << "\n";
-        free(pwd);
-    }
-    string filename(pwd, strlen(pwd));
-    filename += "\\mst.txt";
-    cout << filename << endl;
+    strcat(cwd, name); */
     ifstream fin;
-    fin.open(filename);
+    fin.open(name);
     if (!fin.is_open())
     {
-        cerr << "Could not open the file: " << filename << endl;
+        cerr << "Could not open the file: " << name << endl;
         exit(EXIT_FAILURE);
     }
     int v = 0, e = 0, p, q;

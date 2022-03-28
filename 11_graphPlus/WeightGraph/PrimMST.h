@@ -27,7 +27,7 @@ public:
             marked_[i] = false;
         }
 
-        // 默认让顶点0进入数中
+        // 默认让顶点0进入树中
         distTo_[0] = 0.0;
         pq_->insert(0, new double(0.0));
 
@@ -122,7 +122,7 @@ private:
     Edge **edgeTo_;  // 索引为顶点, 值为当前顶点和最小生成树之间的最短边
     double *distTo_; // 索引为顶点, 值为当前顶点和最小生成树之间的最短边的权重
     bool *marked_;
-    IndexMinPriorityQueue<double> *pq_; // 树中顶点与非树中顶点之间的有效横切边
+    IndexMinPriorityQueue<double> *pq_; // 树中顶点与非树中顶点之间的有效横切边, 索引为顶点, 元素为边的权重
 };
 
 #endif /* PRIMMST_H */

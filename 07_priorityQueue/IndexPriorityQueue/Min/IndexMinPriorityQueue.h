@@ -1,6 +1,11 @@
 #ifndef INDEXMINPRIORITYQUEUE_H
 #define INDEXMINPRIORITYQUEUE_H
 
+/**
+ * @brief 索引最小优先队列
+ * 
+ * @tparam T 
+ */
 template <class T>
 class IndexMinPriorityQueue
 {
@@ -35,10 +40,12 @@ public:
         if (pq_ != nullptr)
         {
             delete[] pq_;
+            pq_ = nullptr;
         }
         if (qp_ != nullptr)
         {
             delete[] qp_;
+            qp_ = nullptr;
         }
     }
 
@@ -47,9 +54,9 @@ public:
     bool isEmpty() const { return size_ == 0; }
 
     /**
-     * @brief 插入元素, 并关联索引i
+     * @brief 插入元素, 并关联索引i(存储位置)
      * 
-     * @param i 关联的索引
+     * @param i 关联的索引(存储位置)
      * @param t 插入的元素
      */
     void insert(int i, T *t)
@@ -86,7 +93,7 @@ public:
     }
 
     /**
-     * @brief 是否存在k对应的元素
+     * @brief 是否存在k索引对应的元素
      * 
      * @param k 
      * @return true 
@@ -193,7 +200,7 @@ private:
     }
 
 private:
-    T **items_; // 存储元素, 根节点从索引为1
+    T **items_; // 存储元素
     int *pq_;   // 储存元素的索引, 需要堆有序
     int *qp_;   // 储存pq_的逆序, pq_的值为索引, pq_的索引为值
     int size_;
