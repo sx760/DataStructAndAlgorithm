@@ -13,7 +13,7 @@ public:
     DirectedEdge(int v, int w, double weight) : v_(v), w_(w), weight_(weight)
     {
     }
-    DirectedEdge(const DirectedEdge &e) : v_(e.v_), w_(e.w_), weight_(e.weight())
+    DirectedEdge(const DirectedEdge &e) : v_(e.v_), w_(e.w_), weight_(e.weight_)
     {
     }
 

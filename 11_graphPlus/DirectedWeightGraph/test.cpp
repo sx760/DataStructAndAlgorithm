@@ -53,6 +53,9 @@ int main(int argc, char const *argv[])
     }
     cout << endl;
 
+    delete G;
+    delete d;
+
     return 0;
 }
 
