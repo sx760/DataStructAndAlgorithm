@@ -21,6 +21,21 @@ public:
         }
         
     }
+    ~EdgeWeightedDirectedGraph() 
+    {
+        if (adj_ != nullptr)
+        {
+            for (int i = 0; i < v_; i++)
+            {
+                if (adj_[i] != nullptr)
+                {
+                    delete adj_[i];
+                    adj_[i] = nullptr;
+                }
+            }
+            delete[] adj_;
+        }
+    }
 
     int V() const { return v_; }
     int E() const { return e_; }
