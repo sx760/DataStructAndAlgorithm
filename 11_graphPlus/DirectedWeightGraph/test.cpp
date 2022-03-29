@@ -40,8 +40,7 @@ int main(int argc, char const *argv[])
                 break;
             };
         }
-        DirectedEdge *edge = new DirectedEdge(p, q, w);
-        G->addEdge(edge);
+        G->addEdge(new DirectedEdge(p, q, w));
     }
     fin.close();
     
@@ -53,8 +52,9 @@ int main(int argc, char const *argv[])
     }
     cout << endl;
 
-    delete G;
+    delete path;
     delete d;
+    delete G;
 
     return 0;
 }

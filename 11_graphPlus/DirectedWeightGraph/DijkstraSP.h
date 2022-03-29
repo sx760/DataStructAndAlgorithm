@@ -93,7 +93,7 @@ public:
             {
                 break;
             }
-            allEdges->enqueue(e);
+            allEdges->enqueue(new DirectedEdge(*e));
             v = e->from();
         }
         return allEdges;
