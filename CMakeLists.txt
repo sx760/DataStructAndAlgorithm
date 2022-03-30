@@ -8,6 +8,8 @@ set(CMAKE_CXX_FLAGS_DEBUG "-Wall -g2 -ggdb")
 
 set(CMAKE_CXX_fLAGS_RELEASE "-Wall -O3")
 
-set(CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(13_trieTree)
