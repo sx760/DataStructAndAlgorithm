@@ -10,4 +10,4 @@ set(CMAKE_CXX_fLAGS_RELEASE "-Wall -O3")
 
 set(CXX_STANDARD 11)
 
-add_subdirectory(11_graphPlus/DirectedWeightGraph)
+add_subdirectory(13_trieTree)
